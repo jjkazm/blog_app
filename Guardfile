@@ -85,13 +85,13 @@ guard :rspec, cmd: "bundle exec rspec" do
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
   ###### CHANGED below
-  watch(rails.routes)          { spec }  #{ "#{rspec.spec_dir}/routing" }
+  watch(rails.routes)          { "spec" }  #{ "#{rspec.spec_dir}/routing" }
   ###### CHANGED above
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
 
   # Capybara features specs
   ###### CHANGED below
-  watch(rails.view_dirs)     { spec/features } #{ |m| rspec.spec.call("features/#{m[1]}") }
+  watch(rails.view_dirs)     { "spec/features" } #{ |m| rspec.spec.call("features/#{m[1]}") }
   ###### CHANGED above
   watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
 
