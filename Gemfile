@@ -7,10 +7,18 @@ ruby '2.5.1'
 gem 'haml'
 gem 'html2haml'
 
+# Use bootstrap
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
+
+
+# Use RSpec
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 end
 
+
+# Use capybara
 group :test do
   gem 'capybara'
 end
