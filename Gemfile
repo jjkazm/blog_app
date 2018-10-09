@@ -7,6 +7,9 @@ ruby '2.5.1'
 gem 'haml'
 gem 'html2haml'
 
+#Use bootstrap
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
 
 group :test do
   gem 'capybara'
