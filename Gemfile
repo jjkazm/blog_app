@@ -7,18 +7,7 @@ ruby '2.5.1'
 gem 'haml'
 gem 'html2haml'
 
-# Use bootstrap
-gem 'bootstrap', '~> 4.1.3'
-gem 'jquery-rails'
 
-
-# Use RSpec
-group :development, :test do
-  gem 'rspec-rails', '~> 3.8'
-end
-
-
-# Use capybara
 group :test do
   gem 'capybara'
 end
@@ -59,6 +48,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #Use RSpec
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -68,6 +59,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Use guard
+  gem 'guard-cucumber'
+  gem 'guard-rspec', require: false
+
+
 end
 
 
