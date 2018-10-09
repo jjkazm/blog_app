@@ -1,0 +1,8 @@
+- if @article.errors.any?
+  %ul.alert.alert-danger
+    .alert-heading
+      = pluralize(@article.errors.count, "error")
+      stopped this article from being published
+    - @article.errors.full_messages.each do |error|
+      %li
+        #{ error }

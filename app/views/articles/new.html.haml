@@ -1,5 +1,7 @@
 %h1 Add New Article
 
+=render "shared/errors"
+
 = form_for @article, :html => {class: "form-horizontal", role: "form"} do |f|
   .form-group
     .control-label
@@ -9,5 +11,4 @@
     .control-label
       = f.label :body
     = f.text_area :body, size: "60x12", class: 'form-control', placeholder: "Article...", autofocus: true
-
   = f.submit "Create Article", class: "btn btn-success"
