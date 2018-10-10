@@ -8,3 +8,7 @@
         %hr
         %p.card-text
           #{ @article.body }
+        %hr
+        .row
+          .col-md-6
+            = link_to "Edit Article", edit_article_path(@article), class: "btn btn-success"

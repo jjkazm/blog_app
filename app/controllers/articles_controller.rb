@@ -20,7 +20,19 @@ class ArticlesController < ApplicationController
   end
 
   def show
+  end
 
+  def edit
+  end
+
+  def update
+    if @article.update(article_params)
+      flash[:success] = "Article has been updated"
+      redirect_to @article
+    else
+      flash.now[:danger] = "Article has not been updated"
+      render 'edit'
+    end
   end
 
   protected
