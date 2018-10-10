@@ -23,6 +23,11 @@ class ArticlesController < ApplicationController
 
   end
 
+  protected
+  def resource_not_found
+    flash[:danger] = "The article you are looking for can't be found"
+    redirect_to articles_path
+  end
 
   private
   def article_params
