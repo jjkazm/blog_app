@@ -1,2 +1,9 @@
 %h1 All Articles
-= link_to "New Article", new_article_path
+= link_to "New Article", new_article_path, class: "btn btn-success"
+-@articles.each do |article|
+  .card.mb-2.mt-2
+    .card-body
+      %h5.card-title
+        = link_to article.title, article_path(article)
+      %p.card-text
+        = truncate( article.body, length: 500)
