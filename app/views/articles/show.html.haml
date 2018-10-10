@@ -1,1 +1,10 @@
-%h1 #{ @article.title}
+.row
+  .col-md-8.mx-auto
+    .card.text-center.mt-5
+      %h2.card-header
+        #{ @article.title }
+      .card-body
+        %small #{ @article.created_at.strftime( "%b %d %Y") }
+        %hr
+        %p.card-text
+          #{ @article.body }
