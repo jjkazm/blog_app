@@ -10,12 +10,6 @@
           %span.sr-only (current)
       %li.nav-item
         %a.nav-link{:href => "#"} Authors
-      %li.nav-item
-        =link_to "Sign up", new_user_registration_path, class: "nav-link"
-      %li.nav-item
-        =link_to "Sign out", destroy_user_session_path, method: :destroy,
-                  class: "nav-link"
-
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           Dropdown
@@ -26,6 +20,9 @@
           %a.dropdown-item{:href => "#"} Something else here
       %li.nav-item
         %a.nav-link.disabled{:href => "#"} Disabled
-    %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+    %ul.navbar-nav.my-2.my-lg-0
+      %li.nav-item
+        =link_to "Sign up", new_user_registration_path, class: "nav-link"
+      %li.nav-item
+        =link_to "Sign out", destroy_user_session_path, method: :delete,
+                  class: "nav-link"
