@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  #before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   def index
     @articles = Article.all
@@ -27,29 +27,50 @@ class ArticlesController < ApplicationController
   def edit
     if !user_signed_in?
       flash[:danger] = "You need to be logged in to edit articles. Sign in or sign up."
-      redirect_to root_path
+      redirect_to new_user_registration_path
     else
-      if ! current_user.id == @article.user_id
-        flash[:danger] = "You need to be the author to edit articles."
+      if !(current_user.id == @article.user_id)
         redirect_to root_path
+        flash[:danger] = "You need to be the author to edit articles."
       end
     end
   end
 
   def update
-    if @article.update(article_params)
-      flash[:success] = "Article has been updated"
-      redirect_to @article
+    if !user_signed_in?
+      flash[:danger] = "You need to be logged in to edit articles. Sign in or sign up."
+      redirect_to new_user_registration_path
     else
-      flash.now[:danger] = "Article has not been updated"
-      render 'edit'
+      if !(current_user.id == @article.user_id)
+        flash[:danger] = "You need to be the author to edit articles."
+        redirect_to root_path
+      else
+        if @article.update(article_params)
+          flash[:success] = "Article has been updated"
+          redirect_to @article
+        else
+          flash.now[:danger] = "Article has not been updated"
+          render 'edit'
+        end
+      end
     end
   end
 
   def destroy
-    @article.destroy
-    flash[:danger] = "Article has been deleted"
-    redirect_to articles_path
+    if user_signed_in?
+      if current_user.id == @article.user_id
+        @article.destroy
+        flash[:danger] = "Article has been deleted"
+        redirect_to articles_path
+      else
+        flash[:danger] = "You need to be the author to delete articles."
+        redirect_to @article
+      end
+    else
+      flash[:danger] = "You need to be logged in to delete articles. Sign in or sign up."
+      redirect_to new_user_registration_path
+    end
+
   end
 
   protected
