@@ -25,6 +25,15 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    if !user_signed_in?
+      flash[:danger] = "You need to be logged in to edit articles. Sign in or sign up."
+      redirect_to root_path
+    else
+      if ! current_user.id == @article.user_id
+        flash[:danger] = "You need to be the author to edit articles."
+        redirect_to root_path
+      end
+    end
   end
 
   def update
