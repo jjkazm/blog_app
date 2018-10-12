@@ -9,5 +9,7 @@
       .card-body
         %h5.card-title
           = link_to article.title, article_path(article)
+        %small
+          Created by #{ article.user.email }
         %p.card-text
           = truncate( article.body, length: 500)
