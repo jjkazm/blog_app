@@ -1,5 +1,6 @@
 %h1 All Articles
-= link_to "New Article", new_article_path, class: "btn btn-success"
+-if user_signed_in?
+  = link_to "New Article", new_article_path, class: "btn btn-success"
 -if @articles.empty?
   %h1.card#no-articles
     No articles yet
